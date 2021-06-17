@@ -1,0 +1,7 @@
+[run]
+source = ./vox_logstash
+
+[report]
+omit =
+    **/tests.py
+    tasks.py

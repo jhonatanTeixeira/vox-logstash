@@ -39,6 +39,7 @@ class LogstashFormatter(logging.Formatter):
             "message": record.getMessage(),
             "@timestamp": self.format_timestamp(record.created),
             "log.level": record.levelname,
+            "trace": record.stack_info,
         }
 
         return json.dumps(json_record) + "\\r"

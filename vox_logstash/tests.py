@@ -23,6 +23,7 @@ class LoggingTest(TestCase):
         logger.addHandler(handler := LogstashHandler('localhost', '1337'))
         handler.setFormatter(LogstashFormatter())
 
-        logger.info('lets debug')
+        logger.info('lets debug', stack_info=True)
 
         connection.sendall.assert_called_with(AssertCalledWithMatch(b'"message": "lets debug"'))
+        connection.sendall.assert_called_with(AssertCalledWithMatch(b'test_should_send_logs_to_socket'))
